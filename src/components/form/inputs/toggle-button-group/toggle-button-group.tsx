@@ -33,7 +33,7 @@ const ToggleButtonGroupInput = ({
           {...field}
           fullWidth
           exclusive
-          data-testid={`toggle-button-group-input-${kebabize(name)}`}
+          data-testid={`${kebabize(name)}-field`}
           sx={{
             "& > button": {
               flex: "1 1 0px",

@@ -23,10 +23,17 @@ const DateTimePickerInput = <T extends PickerValidDate>({
           inputRef={field.ref}
           slotProps={{
             textField: {
+              ...({ "data-testid": `${kebabize(name)}-field` } as {}),
               error: !!error,
               helperText: error ? error.message : "",
+              InputLabelProps: {
+                ...({ "data-testid": `${kebabize(name)}-label` } as {}),
+              },
               inputProps: {
-                "data-testid": `date-time-picker-${kebabize(name)}`,
+                "data-testid": `${kebabize(name)}-input`,
+              },
+              FormHelperTextProps: {
+                ...({ "data-testid": `${kebabize(name)}-message` } as {}),
               },
             },
           }}
