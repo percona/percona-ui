@@ -26,7 +26,7 @@ const SwitchInput = ({
           )}
         </>
       }
-      data-testid={`switch-input-${kebabize(name)}-label`}
+      data-testid={`${kebabize(name)}-label`}
       control={
         <Controller
           name={name}
@@ -45,7 +45,7 @@ const SwitchInput = ({
                 }),
               }}
               checked={field.value}
-              data-testid={`switch-input-${kebabize(name)}`}
+              data-testid={`${kebabize(name)}-input`}
               {...restSwitchFieldProps}
             />
           )}

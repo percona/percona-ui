@@ -32,11 +32,13 @@ const TextInput = ({
           variant="outlined"
           required={isRequired}
           error={!!error}
+          data-testid={`${kebabize(name)}-field`}
           InputLabelProps={{
             shrink: true,
+            ...({ "data-testid": `${kebabize(name)}-label` } as {}),
           }}
           inputProps={{
-            "data-testid": `text-input-${kebabize(name)}`,
+            "data-testid": `${kebabize(name)}-input`,
             onWheel: (e) => {
               (e.target as HTMLElement).blur();
             },
@@ -71,6 +73,7 @@ const TextInput = ({
           helperText={error ? error.message : restFieldProps?.helperText}
           FormHelperTextProps={{
             sx: formHelperTextPropsSx,
+            ...({ "data-testid": `${kebabize(name)}-message` } as {}),
           }}
         />
       )}

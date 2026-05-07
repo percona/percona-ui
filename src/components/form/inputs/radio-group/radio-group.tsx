@@ -3,6 +3,7 @@ import {
   RadioGroup as MuiRadioGroup,
   Radio,
 } from '@mui/material';
+import { kebabize } from '@/utils';
 import { Controller, useFormContext } from 'react-hook-form';
 import LabeledContent from '../../../labeled-content';
 import { RadioGroupProps } from './radio-group.types';
@@ -29,6 +30,7 @@ const RadioGroup = ({
           {...field}
           row
           name={`radio-group-${name}`}
+          data-testid={`${kebabize(name)}-field`}
           {...radioGroupFieldProps}
         >
           {options.map((option) => (

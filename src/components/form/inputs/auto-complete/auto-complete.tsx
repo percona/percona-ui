@@ -46,7 +46,7 @@ function AutoCompleteInput<T>({
                 onChange();
               }
             }}
-            data-testid={`${kebabize(name)}-autocomplete`}
+            data-testid={`${kebabize(name)}-field`}
             // We might generalize this in the future, if we think renderInput should be defined from the outside
             renderInput={(params) => (
               <TextField
@@ -54,8 +54,12 @@ function AutoCompleteInput<T>({
                 error={!!error}
                 label={label}
                 helperText={error ? error.message : helperText}
+                InputLabelProps={{
+                  ...params.InputLabelProps,
+                  ...({ "data-testid": `${kebabize(name)}-label` } as {}),
+                }}
                 inputProps={{
-                  "data-testid": `text-input-${kebabize(name)}`,
+                  "data-testid": `${kebabize(name)}-input`,
                   ...params.inputProps,
                   ...textFieldProps?.inputProps,
                 }}
@@ -69,6 +73,9 @@ function AutoCompleteInput<T>({
                       {params.InputProps.endAdornment}
                     </>
                   ),
+                }}
+                FormHelperTextProps={{
+                  ...({ "data-testid": `${kebabize(name)}-message` } as {}),
                 }}
                 size="small"
                 required={isRequired}

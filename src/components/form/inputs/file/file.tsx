@@ -1,7 +1,6 @@
-import { IconButton } from '@mui/material';
-import { TextField } from '@mui/material';
+import { IconButton, TextField, TextFieldProps } from '@mui/material';
 import { Upgrade as UpgradeIcon } from '@mui/icons-material';
-import { TextFieldProps } from '@mui/material';
+import { kebabize } from '@/utils';
 import { Control, Controller, useFormContext } from 'react-hook-form';
 
 type FileInputProps = {
@@ -39,6 +38,16 @@ const FileInput = ({
           type="text"
           size="small"
           error={!!error}
+          data-testid={`${kebabize(name)}-field`}
+          InputLabelProps={{
+            ...({ "data-testid": `${kebabize(name)}-label` } as {}),
+          }}
+          inputProps={{
+            "data-testid": `${kebabize(name)}-input`,
+          }}
+          FormHelperTextProps={{
+            ...({ "data-testid": `${kebabize(name)}-message` } as {}),
+          }}
           InputProps={{
             endAdornment: (
               <IconButton component="label">

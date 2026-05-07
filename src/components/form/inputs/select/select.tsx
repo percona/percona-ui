@@ -29,9 +29,10 @@ const SelectInput = ({
     <FormControl
       sx={{ mt: 3 }}
       size={formControlProps?.size || "small"}
+      data-testid={`${kebabize(name)}-field`}
       {...formControlProps}
     >
-      <InputLabel id={`${name}-input-label`}>{label}</InputLabel>
+      <InputLabel id={`${name}-input-label`} data-testid={`${kebabize(name)}-label`}>{label}</InputLabel>
       <Controller
         name={name}
         control={control ?? contextControl}
@@ -42,9 +43,8 @@ const SelectInput = ({
             labelId="demo-simple-select-label"
             variant="outlined"
             error={error !== undefined}
-            data-testid={`select-${kebabize(name)}-button`}
             inputProps={{
-              "data-testid": `select-input-${kebabize(name)}`,
+              "data-testid": `${kebabize(name)}-input`,
               ...selectFieldProps?.inputProps,
             }}
             IconComponent={
@@ -81,7 +81,7 @@ const SelectInput = ({
         )}
         {...controllerProps}
       />
-      {helperText && <FormHelperText>{helperText}</FormHelperText>}
+      {helperText && <FormHelperText data-testid={`${kebabize(name)}-message`}>{helperText}</FormHelperText>}
     </FormControl>
   );
 };
