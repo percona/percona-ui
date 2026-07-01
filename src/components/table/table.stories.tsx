@@ -218,7 +218,7 @@ const EmptyStateIllustration = () => (
 const meta = {
   title: 'Data display/Table',
   component: Table,
-  tags: ['autodocs'],
+  tags: ['autodocs', 'stable'],
   parameters: {
     layout: 'padded',
     controls: {
